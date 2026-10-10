@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic information about the page -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Budget & Transactions | FinWise</title>
+
+    <!-- Connect the shared stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Load shared data before the page-specific JavaScript -->
+    <script src="js/data.js" defer></script>
+    <script src="js/budget.js" defer></script>
+</head>
+
+<body>
+    <!-- Main navigation shared across FinWise -->
+    <header class="site-header">
+        <a href="index.html" class="brand">FinWise</a>
+
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="budget.html" class="active">Budget</a>
+            <a href="goals.html">Savings Goals</a>
+            <a href="reports.html">Reports</a>
+        </nav>
+    </header>
+
+    <main class="wrap">
+        <!-- Page introduction -->
+        <section class="intro">
+            <p class="eyebrow">YOUR MONEY, ORGANIZED</p>
+            <h1>Budget & Transactions</h1>
+            <p>
+                Plan your spending, record your income and expenses,
+                and see how much money you have left.
+            </p>
+        </section>
+
+        <!-- Financial summary -->
+        <section class="summary">
+            <article class="panel metric">
+                <p>Monthly Income</p>
+                <h2 id="budgetIncome">GH₵0.00</h2>
+            </article>
+
+            <article class="panel metric">
+                <p>Monthly Expenses</p>
+                <h2 id="budgetExpenses">GH₵0.00</h2>
+            </article>
+
+            <article class="panel metric">
+                <p>Available Balance</p>
+                <h2 id="budgetBalance">GH₵0.00</h2>
+            </article>
+        </section>
+
+        <!-- Forms are arranged in two columns -->
+        <section class="columns">
+
+            <!-- Form for recording income and expenses -->
+            <article class="panel">
+                <h2>Record a Transaction</h2>
+                <p>Enter money received or money spent.</p>
+
+                <form id="transactionForm">
+                    <label for="transactionType">Transaction type</label>
+                    <select id="transactionType" required>
+                        <option value="income">Income</option>
+                        <option value="expense">Expense</option>
+                    </select>
+
+                    <label for="transactionDescription">Description</label>
+                    <input
+                        type="text"
+                        id="transactionDescription"
+                        placeholder="e.g. Monthly allowance"
+                        required
+                    >
+
+                    <label for="transactionCategory">Category</label>
+                    <select id="transactionCategory" required>
+                        <option value="Allowance">Allowance</option>
+                        <option value="Salary">Salary</option>
+                        <option value="Business">Business</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Accommodation">Accommodation</option>
+                        <option value="Education">Education</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Health">Health</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <label for="transactionAmount">Amount (GH₵)</label>
+                    <input
+                        type="number"
+                        id="transactionAmount"
+                        min="0.01"
+                        step="0.01"
+                        placeholder="0.00"
+                        required
+                    >
+
+                    <label for="transactionDate">Date</label>
+                    <input
+                        type="date"
+                        id="transactionDate"
+                        required
+                    >
+
+                    <button type="submit" class="btn">
+                        Save Transaction
+                    </button>
+                </form>
+
+                <p id="transactionMessage" class="message" aria-live="polite"></p>
+            </article>
+
+            <!-- Form for setting monthly budgets -->
+            <article class="panel">
+                <h2>Set a Monthly Budget</h2>
+                <p>Choose how much you plan to spend in a category.</p>
+
+                <form id="budgetForm">
+                    <label for="budgetCategory">Spending category</label>
+                    <select id="budgetCategory" required>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Accommodation">Accommodation</option>
+                        <option value="Education">Education</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Health">Health</option>
+                        <option value="Other">Other</option>
+                    </select>
+
+                    <label for="budgetAmount">Monthly budget (GH₵)</label>
+                    <input
+                        type="number"
+                        id="budgetAmount"
+                        min="0"
+                        step="0.01"
+                        placeholder="e.g. 500"
+                        required
+                    >
+
+                    <button type="submit" class="btn">
+                        Save Budget
+                    </button>
+                </form>
+
+                <p id="budgetMessage" class="message" aria-live="polite"></p>
+
+                <!-- Saved budgets will appear here -->
+                <div id="budgetList"></div>
+            </article>
+        </section>
+
+        <!-- Table showing all recorded transactions -->
+        <section class="panel table-panel">
+            <h2>Transaction History</h2>
+            <p>Review your income, expenses, and savings contributions.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="transactionTableBody">
+                        <!-- JavaScript will insert transactions here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

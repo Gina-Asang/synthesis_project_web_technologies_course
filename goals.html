@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings Goals | FinWise</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/data.js" defer></script>
+    <script src="js/goals.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html" class="brand">FinWise</a>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="budget.html">Budget</a>
+            <a href="goals.html" class="active">Savings Goals</a>
+            <a href="reports.html">Reports</a>
+        </nav>
+    </header>
+
+    <main class="wrap">
+        <section class="intro">
+            <p class="eyebrow">PLAN FOR YOUR FUTURE</p>
+            <h1>Savings Goals</h1>
+            <p>Create savings targets, contribute money, and track your progress.</p>
+        </section>
+
+        <section class="summary">
+            <article class="panel metric">
+                <p>Total Saved</p>
+                <h2 id="totalSaved">GH₵0.00</h2>
+            </article>
+            <article class="panel metric">
+                <p>Total Target</p>
+                <h2 id="totalTarget">GH₵0.00</h2>
+            </article>
+            <article class="panel metric">
+                <p>Remaining to Save</p>
+                <h2 id="remainingToSave">GH₵0.00</h2>
+            </article>
+        </section>
+
+        <section class="columns">
+            <article class="panel">
+                <h2>Create a Savings Goal</h2>
+
+                <form id="goalForm">
+                    <label for="goalName">Goal name</label>
+                    <input type="text" id="goalName"
+                           placeholder="e.g. New laptop" required>
+
+                    <label for="goalTarget">Target amount (GH₵)</label>
+                    <input type="number" id="goalTarget"
+                           min="0.01" step="0.01" required>
+
+                    <label for="goalMonthlySaving">Planned monthly saving (GH₵)</label>
+                    <input type="number" id="goalMonthlySaving"
+                           min="0" step="0.01" value="0" required>
+
+                    <label for="goalDeadline">Target date (optional)</label>
+                    <input type="date" id="goalDeadline">
+
+                    <button type="submit" class="btn">Create Goal</button>
+                </form>
+
+                <p id="goalMessage" class="message" aria-live="polite"></p>
+            </article>
+
+            <article class="panel">
+                <h2>Contribute to a Goal</h2>
+
+                <form id="contributionForm">
+                    <label for="contributionGoal">Choose a goal</label>
+                    <select id="contributionGoal" required>
+                        <option value="">Select a goal</option>
+                    </select>
+
+                    <label for="contributionAmount">Contribution (GH₵)</label>
+                    <input type="number" id="contributionAmount"
+                           min="0.01" step="0.01" required>
+
+                    <label for="contributionDate">Date</label>
+                    <input type="date" id="contributionDate" required>
+
+                    <button type="submit" class="btn">Save Contribution</button>
+                </form>
+
+                <p id="contributionMessage" class="message"
+                   aria-live="polite"></p>
+            </article>
+        </section>
+
+        <section class="panel">
+            <h2>Your Goals</h2>
+            <p>Track how close you are to achieving each goal.</p>
+            <div id="goalsList" class="goal-list"></div>
+        </section>
+    </main>
+</body>
+</html>

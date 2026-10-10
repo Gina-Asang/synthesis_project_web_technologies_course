@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports & Planning | FinWise</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/data.js" defer></script>
+    <script src="js/reports.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html" class="brand">FinWise</a>
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="budget.html">Budget</a>
+            <a href="goals.html">Savings Goals</a>
+            <a href="reports.html" class="active">Reports</a>
+        </nav>
+    </header>
+
+    <main class="wrap">
+        <section class="intro">
+            <p class="eyebrow">UNDERSTAND YOUR MONEY</p>
+            <h1>Reports & Planning</h1>
+            <p>Review your financial habits and use simple tools to plan ahead.</p>
+        </section>
+
+        <section class="summary">
+            <article class="panel metric">
+                <p>Monthly Income</p>
+                <h2 id="reportIncome">GH₵0.00</h2>
+            </article>
+            <article class="panel metric">
+                <p>Monthly Expenses</p>
+                <h2 id="reportExpenses">GH₵0.00</h2>
+            </article>
+            <article class="panel metric">
+                <p>Savings Rate</p>
+                <h2 id="reportSavingsRate">0%</h2>
+            </article>
+        </section>
+
+        <section class="columns">
+            <article class="panel">
+                <h2>Spending by Category</h2>
+                <div id="categoryReport"></div>
+            </article>
+
+            <article class="panel">
+                <h2>Budget Performance</h2>
+                <div id="budgetReport"></div>
+            </article>
+        </section>
+
+        <section class="columns">
+            <article class="panel">
+                <h2>Simple Interest Calculator</h2>
+                <p>Estimate interest earned without compounding.</p>
+
+                <form id="interestForm">
+                    <label for="principal">Starting amount (GH₵)</label>
+                    <input type="number" id="principal" min="0" step="0.01" required>
+
+                    <label for="interestRate">Annual interest rate (%)</label>
+                    <input type="number" id="interestRate" min="0" step="0.01" required>
+
+                    <label for="interestYears">Time (years)</label>
+                    <input type="number" id="interestYears" min="0" step="0.1" required>
+
+                    <button type="submit" class="btn">Calculate Interest</button>
+                </form>
+
+                <p id="interestResult" class="message" aria-live="polite"></p>
+            </article>
+
+            <article class="panel">
+                <h2>Monthly Savings Planner</h2>
+                <p>Estimate how much you need to save each month to reach a target.</p>
+
+                <form id="savingsPlannerForm">
+                    <label for="plannerTarget">Savings target (GH₵)</label>
+                    <input type="number" id="plannerTarget" min="0.01" step="0.01" required>
+
+                    <label for="plannerSaved">Amount already saved (GH₵)</label>
+                    <input type="number" id="plannerSaved" min="0" step="0.01" value="0" required>
+
+                    <label for="plannerMonths">Months remaining</label>
+                    <input type="number" id="plannerMonths" min="1" step="1" required>
+
+                    <button type="submit" class="btn">Plan My Savings</button>
+                </form>
+
+                <p id="plannerResult" class="message" aria-live="polite"></p>
+            </article>
+        </section>
+
+        <section class="panel">
+            <h2>Financial Tips</h2>
+            <ul class="tips-list">
+                <li>Record income and expenses regularly to keep your information accurate.</li>
+                <li>Compare actual spending with your planned budget.</li>
+                <li>Set savings goals with realistic target dates.</li>
+                <li>Review your spending before making changes to your budget.</li>
+                <li>Keep some money available for unexpected expenses when possible.</li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

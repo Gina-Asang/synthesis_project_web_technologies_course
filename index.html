@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Define the character encoding for the webpage. -->
+    <meta charset="UTF-8">
+
+    <!-- Make the layout adapt to mobile phones and other screens. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Set the title shown in the browser tab. -->
+    <title>FinWise | Financial Management</title>
+
+    <!-- Connect the page to our shared CSS stylesheet. -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Load the shared financial data functions first. -->
+    <script src="js/data.js" defer></script>
+
+    <!-- Load the JavaScript responsible for the dashboard. -->
+    <script src="js/main.js" defer></script>
+</head>
+
+<body>
+
+    <!-- HEADER: Contains the logo and the main navigation. -->
+    <header>
+
+        <!-- Clicking the logo returns the user to the dashboard. -->
+        <a href="index.html" class="brand">◈ FinWise</a>
+
+        <!-- Navigation links connect all the main sections. -->
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="budget.html">Budget & Transactions</a>
+            <a href="goals.html">Savings Goals</a>
+            <a href="reports.html">Reports & Planning</a>
+        </nav>
+
+    </header>
+
+
+    <!-- MAIN: Contains the dashboard's financial information. -->
+    <main class="wrap">
+
+        <!-- INTRODUCTION: Welcomes the user to the dashboard. -->
+        <section class="intro">
+
+            <p class="eyebrow">YOUR MONEY, YOUR PLAN</p>
+
+            <h1>Financial Dashboard</h1>
+
+            <p>
+                Understand where your money goes, keep track of
+                your spending, and make progress towards your goals.
+            </p>
+
+        </section>
+
+
+        <!-- SUMMARY: Displays the user's main financial figures. -->
+        <section class="summary">
+
+            <!-- Card 1: Total income recorded for the current month. -->
+            <article>
+                <span>Monthly Income</span>
+                <strong id="dashboardIncome">GHS 0.00</strong>
+            </article>
+
+            <!-- Card 2: Total expenses recorded for the current month. -->
+            <article>
+                <span>Monthly Expenses</span>
+                <strong id="dashboardExpenses">GHS 0.00</strong>
+            </article>
+
+            <!-- Card 3: Income minus expenses for the current month. -->
+            <article>
+                <span>Available Balance</span>
+                <strong id="dashboardBalance">GHS 0.00</strong>
+            </article>
+
+        </section>
+
+
+        <!-- FINANCIAL OVERVIEW: Shows how income is being used. -->
+        <section class="columns">
+
+            <!-- PANEL 1: Summarises monthly spending. -->
+            <article class="panel">
+
+                <h2>Spending Overview</h2>
+
+                <p>
+                    Compare your actual expenses with your
+                    available monthly income.
+                </p>
+
+                <!-- This bar will be updated using JavaScript. -->
+                <div class="track"
+                     role="progressbar"
+                     aria-label="Monthly income spent"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     aria-valuenow="0"
+                     id="dashboardSpendingTrack">
+
+                    <div class="fill"
+                         id="dashboardSpendingBar"
+                         style="width: 0%;">
+                    </div>
+
+                </div>
+
+                <!-- JavaScript will display the spending percentage. -->
+                <p id="dashboardSpendingText">
+                    0% of income spent
+                </p>
+
+                <!-- JavaScript will display a budget message here. -->
+                <p id="dashboardBudgetMessage" class="message">
+                    Record your income and expenses to see your overview.
+                </p>
+
+                <!-- Link to the page where transactions are recorded. -->
+                <a href="budget.html" class="btn">
+                    Manage My Budget
+                </a>
+
+            </article>
+
+
+            <!-- PANEL 2: Summarises the user's savings goals. -->
+            <article class="panel">
+
+                <h2>Savings Progress</h2>
+
+                <p>
+                    Keep working towards the things that matter to you.
+                </p>
+
+                <!-- Display the total saved towards all active goals. -->
+                <div class="metric">
+                    <span>Total Saved Towards Goals</span>
+                    <strong id="dashboardSaved">GHS 0.00</strong>
+                </div>
+
+                <!-- Display the combined target amount for all goals. -->
+                <div class="metric">
+                    <span>Total Savings Targets</span>
+                    <strong id="dashboardTarget">GHS 0.00</strong>
+                </div>
+
+                <!-- Display overall progress towards savings targets. -->
+                <div class="track"
+                     role="progressbar"
+                     aria-label="Overall savings progress"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                     aria-valuenow="0"
+                     id="dashboardGoalsTrack">
+
+                    <div class="fill"
+                         id="dashboardGoalsBar"
+                         style="width: 0%;">
+                    </div>
+
+                </div>
+
+                <!-- JavaScript will update the savings percentage. -->
+                <p id="dashboardGoalsText">
+                    0% of savings targets completed
+                </p>
+
+                <!-- Link to the savings goals page. -->
+                <a href="goals.html" class="btn">
+                    Manage Savings Goals
+                </a>
+
+            </article>
+
+        </section>
+
+
+        <!-- RECENT TRANSACTIONS: Displays the latest recorded activity. -->
+        <section class="panel table-panel">
+
+            <h2>Recent Transactions</h2>
+
+            <p>
+                Review the income and expenses you have recorded.
+            </p>
+
+            <!-- The table will be populated with transaction data. -->
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="dashboardTransactions">
+
+                        <!-- This message appears before transactions exist. -->
+                        <tr>
+                            <td colspan="5">
+                                No transactions recorded yet.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- Link to the full transaction management page. -->
+            <a href="budget.html" class="btn">
+                View All Transactions
+            </a>
+
+        </section>
+
+
+        <!-- PLANNING SECTION: Encourages the user to review their finances. -->
+        <section class="callout">
+
+            <div>
+                <h2>Take control of your finances.</h2>
+
+                <p>
+                    Review your spending, adjust your budget,
+                    and plan your next savings contribution.
+                </p>
+            </div>
+
+            <a href="reports.html" class="btn light">
+                Review My Finances
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER: Explains the educational purpose of FinWise. -->
+    <footer>
+
+        <p>FinWise | Gina's Synthesis </p>
+
+        
+
+    </footer>
+
+</body>
+</html>
